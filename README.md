@@ -13,3 +13,8 @@ To install dependencies, compile and run the Todo app:
 $ npm install
 $ open index.html
 ```
+
+To run the tests:
+```bash
+$ npm run test
+```
