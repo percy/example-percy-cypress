@@ -1,8 +1,5 @@
 # See https://git-scm.com/docs/gitignore for detailed pattern documentation.
 
-# Compiled output
-/dist
-
 # Dependencies
 /node_modules
 
