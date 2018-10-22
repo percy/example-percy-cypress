@@ -2,13 +2,16 @@
   "private": true,
   "scripts": {
     "compile": "java -jar node_modules/google-closure-compiler/compiler.jar --language_in=ES6_STRICT --new_type_inf --js_output_file='dist/bundle.js' 'src/**.js' -W VERBOSE",
-    "prepare": "npm run compile"
+    "prepare": "npm run compile",
+    "test": "./run-tests.sh"
   },
   "dependencies": {
     "todomvc-app-css": "^2.0.1",
     "todomvc-common": "^1.0.2"
   },
   "devDependencies": {
-    "google-closure-compiler": "^20160315.2.0"
+    "cypress": "^3.1.0",
+    "google-closure-compiler": "^20160315.2.0",
+    "simplehttpserver": "^0.2.1"
   }
 }
