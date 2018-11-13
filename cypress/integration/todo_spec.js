@@ -23,7 +23,7 @@ describe('TodoMVC', function() {
     cy.get('.new-todo').should('exist')
     cy.get('.new-todo').type('New fancy todo {enter}')
     // Take a Percy snapshot with different browser widths.
-    cy.percySnapshot('New todo test', {widths: [300, 600, 1000]})
+    cy.percySnapshot('New todo test')
 
     // We should have 1 todo item showing in the todo list and the footer.
     cy.get('.todo-list').children('li').should('have.length', 1)
