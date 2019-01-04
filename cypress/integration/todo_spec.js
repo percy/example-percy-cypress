@@ -25,6 +25,7 @@ describe('TodoMVC', function() {
     // We should have 1 todo item showing in the todo list and the footer.
     cy.get('.todo-list').children('li').should('have.length', 1)
     cy.get('.todo-count').should('contain', '1 item left')
+    cy.percySnapshot();
   })
 
   it('Lets you check off a todo', function() {
@@ -35,5 +36,7 @@ describe('TodoMVC', function() {
     // Click it off -- it should be marked as completed.
     cy.get('.toggle').click()
     cy.get('.todo-count').should('contain', '0 items left')
+    cy.percySnapshot();
+
   })
 })
