@@ -1,0 +1,53 @@
+# .circleci/config.yml
+defaults: &defaults
+  docker:
+    - image: circleci/node:8-browsers
+      environment:
+        JOBS: 1
+  working_directory: ~/example-percy-cypress
+
+version: 2.1
+jobs:
+  checkout_code:
+    <<: *defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  install_dependencies:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: NPM Install
+          command: npm install
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  run_tests:
+    <<: *defaults
+    parallelism: 1
+    steps:
+      - attach_workspace:
+          at: .
+      - run: echo 'export PATH=~/example-percy-cypress/node_modules/.bin:$PATH' >> $BASH_ENV
+      - run:
+          name: Run Tests
+          command: npm test
+
+workflows:
+  test_and_deploy:
+    jobs:
+      - checkout_code
+      - install_dependencies:
+          requires:
+            - checkout_code
+      - run_tests:
+          requires:
+            - install_dependencies

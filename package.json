@@ -1,14 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "test": "percy exec -- ./run-tests.sh"
+    "test": "./run-tests.sh"
   },
   "dependencies": {
     "todomvc-app-css": "^2.0.1",
     "todomvc-common": "^1.0.2"
   },
   "devDependencies": {
-    "@percy/cypress": "^0.2.0",
     "cypress": "^3.1.0",
     "http-server": "^0.11.1"
   }
