@@ -24,7 +24,7 @@ jobs:
           at: .
       - run:
           name: NPM Install
-          command: npm install
+          command: npm install && npm install -g cypress
       - persist_to_workspace:
           root: .
           paths:
