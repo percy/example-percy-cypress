@@ -4,7 +4,7 @@
     "test": "percy exec -- ./run-tests.sh"
   },
   "dependencies": {
-    "todomvc-app-css": "^2.0.1",
+    "todomvc-app-css": "^2.2.0",
     "todomvc-common": "^1.0.2"
   },
   "devDependencies": {
