@@ -9,7 +9,6 @@ const cmd = /^win/.test(platform)
       : `cypress`;
 
 const server = httpServer.createServer()
-const PORT = 8000
 
 server.listen(port)
 console.log(`Server is listening on http://localhost:${port}`)
