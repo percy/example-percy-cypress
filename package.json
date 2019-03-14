@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "test": "percy exec -- ./run-tests.sh"
+    "test": "percy exec -- node ./run-tests.js"
   },
   "dependencies": {
     "todomvc-app-css": "^2.2.0",
