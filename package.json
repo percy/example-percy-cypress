@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "test": "percy exec -- node ./run-tests.js"
+    "test": "percy exec -- cypress run"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -11,6 +11,7 @@
     "todomvc-common": "^1.0.2"
   },
   "devDependencies": {
+    "@percy/agent": "^0.5.0-beta.1",
     "@percy/cypress": "^1.0.6",
     "cypress": "^3.2.0",
     "http-server": "^0.11.1"
