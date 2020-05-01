@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@percy/cypress": "^2.3.1",
-    "cypress": "^3.8.3",
+    "cypress": "^4.5.0",
     "http-server": "^0.12.1"
   }
 }
