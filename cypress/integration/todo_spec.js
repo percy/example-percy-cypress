@@ -4,6 +4,16 @@ describe('TodoMVC', function() {
     cy.visit('localhost:8000')
   })
 
+  it.only('Loads the TodoMVC app', function() {
+    cy.visit('https://sso.alefed.com/login')
+    cy.get(`[data-qa='input-username']`).should('be.visible');
+    cy.percySnapshot('visual_regression_image')
+    
+    // cy.get(`[data-qa='input-username']`).type('accounttobedeleted@xyz.com');
+    // cy.get(`[data-qa='input-password']`).type('~!@#$%');
+    // cy.percySnapshot('visual_regression_image')
+  })
+
   it('Loads the TodoMVC app', function() {
     cy.get('.todoapp').should('exist')
     cy.percySnapshot()

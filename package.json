@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "test": "percy exec -- node ./run-tests.js"
+    "test": "export PERCY_TOKEN=25293aba427a61da7b15b2c554ae01f65f0edcc179682b75c978e37e15724a6b && percy exec -- node ./run-tests.js"
   },
   "engines": {
     "node": ">=8.0.0"
