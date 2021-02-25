@@ -1,7 +1,27 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
+
+default_steps: &default_steps
+  steps:
+    - checkout
+    - run: npm ci
+    - run: npm test
+
+jobs:
+  tests:
+    docker:
+      - image: circleci/node:12-browsers
+    environment:
+      PERCY_ENABLE: 0
+    <<: *default_steps
+  tests_with_percy:
+    # We've opted this node version to be the one that runs and reports Percy's status
+    docker:
+      - image: circleci/node:10-browsers
+    <<: *default_steps
+
 workflows:
-  node-tests:
+  version: 2
+  test:
     jobs:
-      - node/test
+      - tests
+      - tests_with_percy
