@@ -7,8 +7,7 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
-    "todomvc-app-css": "^2.3.0",
-    "todomvc-common": "^1.0.2"
+    "todomvc-app-css": "^2.3.0"
   },
   "devDependencies": {
     "@percy/cypress": "^2.3.4",
