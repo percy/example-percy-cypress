@@ -1,0 +1,24 @@
+name: Tests
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: v1/${{ runner.os }}/node-12/${{ hashFiles('**/package-lock.json') }}
+          restore-keys: v1/${{ runner.os }}/node-12/
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        uses: percy/exec-action@v0.3.1
+        with:
+          custom-command: "npm test"
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
