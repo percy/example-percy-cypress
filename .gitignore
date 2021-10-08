@@ -6,3 +6,6 @@
 # Cypress test run output
 /cypress/videos
 /cypress/screenshots
+
+# Editors
+.vscode
