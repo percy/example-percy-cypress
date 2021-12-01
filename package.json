@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "percy:cypress": "percy exec -- cypress run",
+    "percy:cypress": "cypress run",
     "start:server": "serve -l 8000 .",
     "test": "start-server-and-test start:server 8000 percy:cypress"
   },
