@@ -1,7 +1,7 @@
 describe("TodoMVC", function () {
   beforeEach(function () {
     // Load our app before starting each test case
-    cy.visit("localhost:8000");
+    // cy.visit("localhost:8000");
   });
 
   // it("Loads the TodoMVC app", function () {
@@ -13,28 +13,30 @@ describe("TodoMVC", function () {
   //   cy.get(".main").should("not.be.visible");
   // });
 
-  it("Loads the TodoMVC app 2", function () {
-    cy.get(".todoapp").should("exist");
-    Cypress.backend("http:request", {
-      url: "http:localhost:8001/nothing/here",
-      method: "POST",
-    });
-    cy.get(".main").should("not.be.visible");
+  it("Loads the TodoMVC app", function () {
+    cy.then(() =>
+      Cypress.backend("http:request", {
+        url: "http:localhost:8001/nothing/here",
+        method: "POST",
+      })
+    );
   });
 
-  it("Accepts a new todo", function () {
-    // Before adding a todo, we should have none.
-    cy.get(".todo-count").should("contain", "0 items left");
-    cy.get(".todo-list").children("li").should("have.length", 0);
+  // it("Accepts a new todo", function () {
+  //   // Before adding a todo, we should have none.
+  //   cy.get(".todo-count").should("contain", "0 items left");
+  //   cy.get(".todo-list").children("li").should("have.length", 0);
 
-    // Add a new todo item.
-    cy.get(".new-todo").should("exist");
-    cy.get(".new-todo").type("New fancy todo {enter}");
+  //   // Add a new todo item.
+  //   cy.get(".new-todo").should("exist");
+  //   cy.get(".new-todo").type("New fancy todo {enter}");
 
-    // We should have 1 todo item showing in the todo list and the footer.
-    cy.get(".todo-list").children("li").should("have.length", 1);
-    cy.get(".todo-count").should("contain", "1 item left");
-  });
+  //   // We should have 1 todo item showing in the todo list and the footer.
+  //   cy.get(".todo-list").children("li").should("have.length", 1);
+  //   cy.get(".todo-count").should("contain", "1 item left");
+  // });
+
+  // -------------------------------------------
 
   // it("With no todos, hides main section and footer", function () {
   //   cy.get(".main").should("not.be.visible");
