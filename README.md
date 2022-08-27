@@ -43,13 +43,13 @@ In the shell window you're working in, export the token environment variable:
 
 **Unix**
 
-``` shell
+```shell
 $ export PERCY_TOKEN="<your token here>"
 ```
 
 **Windows**
 
-``` shell
+```shell
 $ set PERCY_TOKEN="<your token here>"
 
 # PowerShell
@@ -64,7 +64,7 @@ configure it in your shell so that Percy is enabled in your local environment.
 Check out a new branch for your work in this tutorial (we'll call this branch
 `tutorial-example`), then run tests & take snapshots:
 
-``` shell
+```shell
 $ git checkout -b tutorial-example
 $ npm run test
 ```
@@ -82,15 +82,17 @@ Use your text editor to edit `index.html` and introduce some visual changes. For
 add inline CSS to bold the "Clear completed" button on line 32. After the change, that line looks
 like this:
 
-``` html
-<button class="clear-completed" style="font-weight:bold">Clear completed</button>
+```html
+<button class="clear-completed" style="font-weight:bold">
+  Clear completed
+</button>
 ```
 
 ### Step 6
 
 Commit the change:
 
-``` shell
+```shell
 $ git commit -am "Emphasize 'Clear completed' button"
 ```
 
@@ -98,7 +100,7 @@ $ git commit -am "Emphasize 'Clear completed' button"
 
 Run the tests with snapshots again:
 
-``` shell
+```shell
 $ npm run test
 ```
 
@@ -124,3 +126,5 @@ completed' button. The unchanged snapshots appear grouped together at the bottom
 
 From here, you can try making your own changes to the app and tests, if you like. If you do, re-run
 the tests and you'll see any visual changes reflected in Percy.
+
+aa
