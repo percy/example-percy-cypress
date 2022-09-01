@@ -12,7 +12,7 @@
     "todomvc-app-css": "^2.4.2"
   },
   "devDependencies": {
-    "@percy/cli": "^1.7.2",
+    "@percy/cli": "^1.10.0",
     "@percy/cypress": "^3.1.2",
     "cypress": "^10.3.1",
     "serve": "^14.0.1",
