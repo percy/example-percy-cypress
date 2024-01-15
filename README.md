@@ -1,6 +1,6 @@
 # example-percy-cypress-1
 
-### Percy integration added.
+### Percy integration added (+3)
 
 Example app demonstrating Percy's Cypress integration, used in [Percy's Cypress tutorial](https://docs.percy.io/docs/cypress-tutorial).
 
