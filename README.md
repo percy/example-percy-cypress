@@ -1,5 +1,7 @@
 # example-percy-cypress-1
 
+### Percy integration added.
+
 Example app demonstrating Percy's Cypress integration, used in [Percy's Cypress tutorial](https://docs.percy.io/docs/cypress-tutorial).
 
 Based on the [TodoMVC](https://github.com/tastejs/todomvc) [VanillaJS](https://github.com/tastejs/todomvc/tree/master/examples/vanillajs)
