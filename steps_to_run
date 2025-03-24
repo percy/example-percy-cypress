@@ -1,0 +1,3 @@
+export PERCY_TOKEN=web_ce2c36fc103b5392452681dfa56e417ef1640d0407bd6d1e2b6553eb149675dc
+git checkout -b feature-1
+npm run test
