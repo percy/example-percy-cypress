@@ -7,12 +7,12 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 20
       - uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: v1/${{ runner.os }}/node-14/${{ hashFiles('**/package-lock.json') }}
-          restore-keys: v1/${{ runner.os }}/node-14/
+          key: v1/${{ runner.os }}/node-20/${{ hashFiles('**/package-lock.json') }}
+          restore-keys: v1/${{ runner.os }}/node-20/
       - name: Install dependencies
         run: npm ci
       - name: Run tests
