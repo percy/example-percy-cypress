@@ -1,0 +1,93 @@
+# PER-8195 Phase 1 — Cypress matrix-row mapping (STUB).
+# Source of truth for the README table + aggregated docs-site grid.
+# Test code in cypress/e2e/todomvc_advanced.cy.js — TO BE WRITTEN.
+
+sdk: cypress
+package: '@percy/cypress'
+language: javascript
+sdk_min_version: '3.1.8'
+cli_min_version: '1.31.10'  # waitForReady requires >= 1.31.10
+
+rows:
+  # Capture options — Cypress accepts all generic Percy snapshot options.
+  - id: widths
+    state: planned
+    test: 'TodoMVC Advanced > exercises widths'
+  - id: percy_css
+    state: planned
+    test: 'TodoMVC Advanced > exercises percyCSS'
+  - id: min_height
+    state: planned
+    test: 'TodoMVC Advanced > exercises minHeight'
+  - id: enable_javascript
+    state: planned
+    test: 'TodoMVC Advanced > exercises enableJavaScript'
+  - id: scope
+    state: planned
+    test: 'TodoMVC Advanced > exercises scope'
+    notes: 'Cypress runs tests in an iframe; scope selector targets the application document, not the Cypress runner.'
+  - id: discovery
+    state: planned
+    test: 'TodoMVC Advanced > exercises discovery options'
+  - id: dom_transformation
+    state: planned
+    test: 'TodoMVC Advanced > exercises domTransformation'
+  - id: responsive_snapshot_capture
+    state: planned
+    test: 'TodoMVC Advanced > exercises responsiveSnapshotCapture'
+  - id: labels
+    state: planned
+    test: 'TodoMVC Advanced > exercises labels'
+  - id: test_case
+    state: planned
+    test: 'TodoMVC Advanced > exercises testCase'
+  - id: device_pixel_ratio
+    state: planned
+    test: 'TodoMVC Advanced > exercises devicePixelRatio'
+  - id: regions
+    state: planned
+    test: 'TodoMVC Advanced > exercises regions (via createRegion helper)'
+  - id: readiness_preset
+    state: planned
+    test: 'TodoMVC Advanced > exercises readiness preset'
+  - id: browsers
+    state: planned
+    test: 'TodoMVC Advanced > exercises browsers override'
+  - id: cli_enable_javascript
+    state: planned
+    test: 'TodoMVC Advanced > exercises cliEnableJavascript alias'
+  - id: disable_shadow_dom
+    state: planned
+  - id: enable_layout
+    state: planned
+  - id: reshuffle_invalid_tags
+    state: planned
+  - id: scope_options_scroll
+    state: planned
+  - id: sync
+    state: planned
+
+  # Cypress-specific behaviors — covered automatically by basic SDK usage.
+  - id: cross_origin_iframe_handling
+    state: covered
+    test: 'automatic via @percy/cypress >= 3.1.8'
+    notes: 'SDK auto-detects cross-origin iframes, injects PercyDOM, captures separately.'
+  - id: cookie_capture_via_getcookies
+    state: covered
+    test: 'automatic via @percy/cypress >= 3.1.8'
+  - id: create_region_helper
+    state: planned
+    test: 'TodoMVC Advanced > exercises regions (via createRegion helper)'
+
+  # Configured globally via .percy.yml or env, not per-snapshot.
+  - id: env_percy_server_address
+    state: planned
+    test: 'CI: advanced job sets PERCY_SERVER_ADDRESS via env'
+  - id: percy_yml_global_config
+    state: planned
+    test: 'global config consumed via .percy.yml'
+  - id: environment_info_reporting
+    state: covered
+    test: 'automatic via @percy/cypress client info'
+
+# Pre-existing basic-example coverage (todo.cy.js): three bare cy.percySnapshot() calls (no options). Carried as `planned` rows; advanced/ will exercise each option in a dedicated test.
