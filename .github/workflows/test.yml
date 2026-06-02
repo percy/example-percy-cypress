@@ -27,12 +27,11 @@ jobs:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
   advanced:
-    # PER-8195 advanced example. Runs in --testing mode so PR builds (including
-    # forks and Dependabot) don't require a real PERCY_TOKEN. The `--testing`
-    # flag is only valid on `percy exec` (not `exec:start`); it exposes
-    # /test/requests for matrix-row assertion. We capture /test/requests to a
-    # file inside the exec wrapper because percy exec tears down the local
-    # server on inner-command exit.
+    # PER-8195 advanced example. Runs the advanced suite the same way the
+    # `basic` job above runs its suite — under Percy with the repo's
+    # PERCY_TOKEN. The advanced npm script wraps `percy exec` and starts the
+    # static server itself (start-server-and-test), so the example exercising
+    # every matrix row IS the test; no external assertion helper is needed.
     runs-on: ubuntu-latest
     timeout-minutes: 10
     defaults:
@@ -43,44 +42,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Install jq + yq
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq jq
-          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-          sudo chmod +x /usr/local/bin/yq
-      - name: Install advanced/ dependencies
+      - name: Install dependencies
         run: npm install
-      - name: Fetch shared advanced-snapshot assertion helper
-        # TODO(PER-8195 D8): pin to a tagged commit once percy-public-repos-parent
-        # publishes the scripts/ dir to a stable URL or to an npm package.
-        run: |
-          curl -fsSL -o /tmp/assert-advanced-snapshots.sh \
-            https://raw.githubusercontent.com/percy/percy-public-repos-parent/main/scripts/assert-advanced-snapshots.sh
-          chmod +x /tmp/assert-advanced-snapshots.sh
-      - name: Start static server (background)
-        run: |
-          npx --no-install serve -l 8000 .. &
-          for i in {1..30}; do
-            if curl -fsS http://localhost:8000 >/dev/null 2>&1; then
-              echo "static server ready"
-              exit 0
-            fi
-            sleep 1
-          done
-          echo "static server did not start in 30s" >&2
-          exit 1
-      - name: Run cypress advanced tests (--testing) + capture /test/requests
+      - name: Run advanced tests
         env:
-          PERCY_TOKEN: fake_token
-        run: |
-          npx --no-install percy exec --testing -- bash -c '
-            npx --no-install cypress run --config-file cypress.config.js --browser electron
-            ec=$?
-            curl -fsS http://localhost:5338/test/requests > advanced-requests.json || true
-            exit $ec
-          '
-      - name: Assert matrix-row coverage
-        env:
-          PERCY_REQUESTS_FILE: ${{ github.workspace }}/advanced/advanced-requests.json
-        run: /tmp/assert-advanced-snapshots.sh ./matrix.yml
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        run: npm run test:advanced
