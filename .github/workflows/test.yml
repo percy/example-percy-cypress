@@ -4,6 +4,10 @@ name: Tests
 # forbidden — it checks out attacker-controlled code with full secret access.
 on: [push, pull_request]
 
+# Limit GITHUB_TOKEN to read-only (CodeQL: workflow-does-not-contain-permissions)
+permissions:
+  contents: read
+
 jobs:
   basic:
     runs-on: ubuntu-latest
