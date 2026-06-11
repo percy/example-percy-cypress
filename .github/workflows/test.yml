@@ -24,11 +24,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        uses: percy/exec-action@v0.3.1
-        with:
-          custom-command: "npm test"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        run: npm test
 
   advanced:
     # PER-8195 advanced example. Runs the advanced suite the same way the
