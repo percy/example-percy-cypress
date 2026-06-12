@@ -12,11 +12,11 @@ jobs:
   basic:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 14
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: ~/.npm
           key: v1/${{ runner.os }}/node-14/${{ hashFiles('**/package-lock.json') }}
