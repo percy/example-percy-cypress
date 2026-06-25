@@ -1,6 +1,16 @@
 name: Tests
-on: push
+
+# PER-8195: explicitly use `pull_request` only. `pull_request_target` is
+# forbidden — it checks out attacker-controlled code with full secret access.
+on: [push, pull_request]
+
+# Limit GITHUB_TOKEN to read-only (CodeQL: workflow-does-not-contain-permissions)
+permissions:
+  contents: read
+
 jobs:
+  # Named `test` to satisfy the required status check in branch protection
+  # (the protected context is `test`, the repo's original job name).
   test:
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +26,29 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        run: npm test
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        run: npm test
 
+  advanced:
+    # PER-8195 advanced example. Runs the advanced suite the same way the
+    # `basic` job above runs its suite — under Percy with the repo's
+    # PERCY_TOKEN. The advanced npm script wraps `percy exec` and starts the
+    # static server itself (start-server-and-test), so the example exercising
+    # every matrix row IS the test; no external assertion helper is needed.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: advanced
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Run advanced tests
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        run: npm run test:advanced

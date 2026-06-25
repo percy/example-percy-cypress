@@ -1,0 +1,19 @@
+{
+  "name": "example-percy-cypress-advanced",
+  "private": true,
+  "description": "Advanced Percy + Cypress example. Exercises the full applicable SDK feature surface. See README.md for the matrix-row coverage.",
+  "scripts": {
+    "start:server": "serve -l 8000 ..",
+    "percy:cypress:advanced": "percy exec -- cypress run --config-file cypress.config.js",
+    "percy:cypress:advanced:ci": "PERCY_TOKEN=fake_token percy exec --testing -- cypress run --config-file cypress.config.js",
+    "test:advanced": "start-server-and-test start:server 8000 percy:cypress:advanced",
+    "test:advanced:ci": "start-server-and-test start:server 8000 percy:cypress:advanced:ci"
+  },
+  "devDependencies": {
+    "@percy/cli": "^1.31.13",
+    "@percy/cypress": "^3.1.8",
+    "cypress": "^13.6.4",
+    "serve": "^14.0.1",
+    "start-server-and-test": "1.14.0"
+  }
+}

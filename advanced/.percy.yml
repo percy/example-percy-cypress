@@ -1,0 +1,22 @@
+# PER-8195 — advanced example global config. Demonstrates Percy CLI snapshot
+# config that the @percy/cypress SDK consumes as defaults across every
+# snapshot. Per-snapshot options in cypress/e2e/todomvc_advanced.cy.js override
+# these.
+#
+# Keys are scoped to the v2 schema of @percy/cli@1.31.3 (pinned in
+# package.json). `browsers` and `snapshot.readiness` are exercised per-snapshot
+# in the test file rather than configured globally — they are not part of the
+# top-level config schema for this CLI version.
+
+version: 2
+
+snapshot:
+  widths: [375, 1280]
+  min-height: 1024
+  percy-css: |
+    .new-todo::placeholder { color: #999 !important; }
+
+discovery:
+  allowed-hostnames:
+    - localhost
+  network-idle-timeout: 500

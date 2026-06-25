@@ -1,0 +1,4 @@
+node_modules/
+advanced-requests.json
+cypress/screenshots/
+cypress/videos/
