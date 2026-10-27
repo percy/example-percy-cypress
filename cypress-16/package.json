@@ -1,0 +1,22 @@
+{
+  "name": "example-percy-cypress-16",
+  "private": true,
+  "description": "Percy + Cypress 16: snapshots in component tests and after a subdomain hop. See README.md.",
+  "type": "module",
+  "scripts": {
+    "start:site": "node site/server.cjs",
+    "test:component": "percy exec -- cypress run --component",
+    "percy:subdomain": "percy exec -- cypress run --e2e",
+    "test:subdomain": "start-server-and-test start:site http://a.lvh.me:8010 percy:subdomain"
+  },
+  "devDependencies": {
+    "@percy/cli": "1.32.12",
+    "@percy/cypress": "3.1.9",
+    "@vitejs/plugin-react": "6.1.2",
+    "cypress": "16.1.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "start-server-and-test": "1.14.0",
+    "vite": "8.3.5"
+  }
+}

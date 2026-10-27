@@ -14,6 +14,7 @@ app, forked at commit
 |---|---|---|
 | `./` (basic, at repo root) | Minimum viable integration: a single `cy.percySnapshot()` call per test. Start here. | `npm test` |
 | [`./advanced/`](./advanced) | Full applicable Percy SDK feature surface: widths, percyCSS, regions, readiness, discovery, domTransformation, etc. See [`advanced/README.md`](./advanced/README.md) for the matrix-row coverage table. | `cd advanced && npm install && npm run test:advanced` |
+| [`./cypress-16/`](./cypress-16) | Cypress 16: snapshots in React component tests, and after a hop between subdomains. Needs `@percy/cypress` 3.2.0-beta.0. See [`cypress-16/README.md`](./cypress-16/README.md). | `cd cypress-16 && npm install && npm run test:component` |
 
 ## Cypress Tutorial
 
