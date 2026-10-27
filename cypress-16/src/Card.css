@@ -1,0 +1,3 @@
+.card { width: 300px; padding: 16px; border: 4px solid #e60000; border-radius: 8px; background: #fff; font-family: Georgia, serif; }
+.card h1 { color: #0055cc; font-size: 28px; margin: 0 0 8px; }
+.card .count { font-size: 40px; color: #009900; margin-right: 12px; }
